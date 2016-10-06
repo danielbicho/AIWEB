@@ -1,6 +1,6 @@
 import csv
 
-from aiweb.query.search import search
+from aiweb.query.search import SearchWeb
 
 
 def concatenate(row, fields):
@@ -31,11 +31,13 @@ def ingest_file(input, fields, advanced_operators, output, delimiter=',', quotec
             writer = csv.DictWriter(write_csvfile, fieldnames=fieldnames)
             writer.writeheader()  # this method only available at python 2.7
 
+            search_engine = SearchWeb()
+
             # iterate reader
             for row in reader:
                 query_string = str(concatenate(row, fields))
 
-                response = search(query_string, advanced_operators)
+                response = search_engine.search(query_string, advanced_operators)
 
                 projectsUrl = []
                 results_size = len(response)
