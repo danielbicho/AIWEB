@@ -1,0 +1,1 @@
+# TODO use the new API from bing. API v2 will be shutdown at the end fo 2016
